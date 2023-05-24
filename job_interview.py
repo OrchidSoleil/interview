@@ -107,14 +107,14 @@ def list_as_queue(your_queue):
 # 8. Get missing number in [1...100]
 
 a_hundred = list(range(1, 101))
-a_hundred.remove(13)
 
 
 def get_missing_number(your_list):
+    a_hundred.remove(13)
     for i in range(1, 101):
         if i not in your_list:
             print(f"Missing number is {i}")
-        return i
+            return i
 
 
 get_missing_number(a_hundred)
