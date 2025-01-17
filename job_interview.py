@@ -96,8 +96,8 @@ def list_as_queue(your_queue):
     return your_queue.pop(0)
 
 
-print(list_as_stack(integers))
-print(list_as_queue(integers))
+print(f"List as stack LIFO: {list_as_stack(integers)}")
+print(f"List as queue FIFO: {list_as_queue(integers)}")
 
 
 # 8. Find missing number in [1...100]
@@ -124,7 +124,7 @@ def lists_intersection(list1, list2):
 
 lst1 = [1, 2, 3, 4, 5, 6]
 lst2 = [3, 4, 5, 7, 8]
-print(lists_intersection(lst1, lst2))
+print(f" Intersection of {lst1} and {lst2} is: {lists_intersection(lst1, lst2)}")
 
 
 # 10. Find max and min in assorted list. This is obvious to use min() and max(), so I'll skip.
@@ -211,7 +211,6 @@ print(hash_it(nums, hash_table_1))
 
 
 # 16. Convert infix expression to postfix
-
 class InfixConverter:
     def __init__(self):
         self.operator_precedence = {'+': 1, '-': 1, '/': 2, '*': 2, '^': 3}
@@ -262,3 +261,29 @@ print(converter.convert('a*(b+c)/d'))
 print(converter.convert('((a+b)*c-d)/e'))
 print(converter.convert('(a+(b-c))*(d/e)'))
 
+
+# 17. Check for matching parentheses
+class ParenthesesMatchMaker:
+    def __init__(self):
+        self.parentheses = {')': '(',  '}': '{', ']': '['}
+
+    def find_unmatched(self, text):
+        parentheses_stack = []
+        unmatched_parentheses = []
+        for i in text:
+            if i in {'(', '[', '{'}:
+                parentheses_stack.append(i)
+            elif i in {')', ']', '}'}:
+                if  len(parentheses_stack) > 0:
+                    if parentheses_stack[-1] == self.parentheses[i]:
+                        parentheses_stack.pop()
+                else:
+                    unmatched_parentheses.append(i)
+            else:
+                continue
+        unmatched_parentheses.extend(parentheses_stack)
+        return unmatched_parentheses
+
+text = "ОДНОСТВОЛКА одностволка] -и, ж.‘тс, що ОДИНОЧКА:-. Ходиу на охдту з одностволкойу. 166, 421, 465; ОДПАДІ одпаді -у, ч. велика смертність серед тварин 2. ОДРИГАТИСЬ [одригатис\"]]"
+parentheses = ParenthesesMatchMaker()
+print(f"Unmatched parentheses: {parentheses.find_unmatched(text)}")      
