@@ -263,7 +263,7 @@ print(converter.convert('(a+(b-c))*(d/e)'))
 
 
 # 17. Check for matching parentheses
-class ParenthesesMatchMaker:
+class ParenthesesMatchChecker:
     def __init__(self):
         self.parentheses = {')': '(',  '}': '{', ']': '['}
 
@@ -285,5 +285,5 @@ class ParenthesesMatchMaker:
         return unmatched_parentheses
 
 text = "ОДНОСТВОЛКА одностволка] -и, ж.‘тс, що ОДИНОЧКА:-. Ходиу на охдту з одностволкойу. 166, 421, 465; ОДПАДІ одпаді -у, ч. велика смертність серед тварин 2. ОДРИГАТИСЬ [одригатис\"]]"
-parentheses = ParenthesesMatchMaker()
+parentheses = ParenthesesMatchChecker()
 print(f"Unmatched parentheses: {parentheses.find_unmatched(text)}")      
